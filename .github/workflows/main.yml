@@ -2,7 +2,7 @@
 name: COmpendium of RElations – Modulo 6
 
 on:
-  #push:
+  push:
   workflow_run:
     types: [completed]
     workflows: ["pages-build-deployment"]
@@ -47,7 +47,7 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           repository: ${{ env.JOBS_ID != 1 && env.DOC || '' }}
-          submodules: ${{ env.JOBS_ID != 1 && recursive || false }}
+          submodules: ${{ env.JOBS_ID != 1 && 'recursive' || false }}
           
       - name: ⚙️ Build Maps
         uses: eq19/maps@v8
